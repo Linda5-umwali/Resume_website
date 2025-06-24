@@ -5,4 +5,13 @@ This is my personal resume website built using HTML, CSS, and JavaScript. It sho
 
 Check it out here: [https://yourusername.github.io/Resume_website](https://linda5-umwali.github.io/Resume_website/)
 
+## Features
+
+- Light/Dark Theme Toggle
+- Fully responsive layout for mobile and desktop
+- Clean and modern design
+- Sections: About Me, Skills, Projects, Education, Experience, Contact
+- Functional form with client-side validation
+- Smooth reveal animation on scroll(when you scroll up on home page, the content is revealed)
+
 
