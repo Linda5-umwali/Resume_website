@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linda Umwali_Resume</title>
+  <style>
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.5;
+      background: linear-gradient(135deg, #040445 0%, #111 100%);
+      color: #f0f0f0;
+      padding-top: 60px;
+      transition: background 0.4s, color 0.4s;
+    }
+    body.light-mode {
+      background: #f9f9f9;
+      color: #111;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding-top: 80px;
+      }
+    }
+
+    header {
+      background: linear-gradient(135deg, #020261 0%, #000429 100%);
+      color: #f0f0f0;
+      padding: 0.5px 0.5px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 12;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    body.light-mode header {
+      background: #fff;
+      color: #111;
+    }
+    header h1 { font-size: 20px; color: #f0f0f0; }
+    body.light-mode header h1 { color: #111; }
+    
+    body.light-mode nav ul li a {
+      color: #111;
+    }
+    
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1em;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1em;
+      }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about {
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-photo {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+    .about-text {
+      flex: 1;
+      text-align: justify;
+    }
+    .about h2, .about h3 {
+      text-align: center;   
+      color: #f0f0f0;
+    }
+    body.light-mode .about h2,
+    body.light-mode .about h3 {
+      color: #111;
+    }
+
+    .skills, .projects, .education {
+      background: linear-gradient(135deg, #020261 10%, #000429 100%);
+      color: white;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .skills h2, .projects h2, .education h2 {
+      color: #fff;
+    }
+    body.light-mode .skills,
+    body.light-mode .projects,
+    body.light-mode .education {
+      background: #cfbebe;
+      color: #111;
+    }
+    body.light-mode .skills h2,
+    body.light-mode .projects h2,
+    body.light-mode .education h2 {
+      color: #111;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      color: #111;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgb(193, 178, 243);
+      padding: 20px;
+      max-width: 280px;
+      flex: 1;
+      transition: transform 0.3s ease;
+      text-align: left;
+    }
+
+    .contact {
+      background-color: linear-gradient(135deg, #000000 10%, #000429 100%);
+      color: #ccc;
+      text-align: center;
+      padding: 20em;
+    }
+    
+    @media (max-width: 600px) {
+      .contact {
+        padding: 20px;
+      }
+    }
+    body.light-mode .contact {
+      background-color: #f0f0f0;
+      color: #111;
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      .inputs {
+        width: 100%;
+      }
+    }
+    .contact h2 { color: #fff; }
+    body.light-mode .contact h2 { color: #111; }
+    form input, form textarea {
+      width: 90%;
+      padding: 0.5em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      background: #ffffff;
+      color: #111;
+      padding: 0.7em 1.5em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    body.light-mode form button {
+      background: #111;
+      color: #fff;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      position: relative;
+      top: 1px;
+      right: 882px;
+      padding: 0.3em 0.8em;
+      font-size: 0.9em;
+    }
+    body.light-mode .theme-toggle {
+      color: #111;
+      border-color: #111;
+    }
+    @media (max-width: 100px) {
+      .theme-toggle {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #939393;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Linda Umwali</h1>
+    <nav>
+      <ul id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div>
+      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      <div class="menu-toggle" onclick="toggleMenu()"></div>
+    </div>
+    </nav>
+  </header>
+  <section id="image" class="reveal">
+    <h2>Hello!</h2>
+    <div><img src="IMG-20250619-WA0032.jpg" alt="Linda Umwali" class="about-photo"></div></section>
+    
+  <section id="about" class="about reveal">
+    <div class="about-text">
+      <h3>About Me</h3>
+      <p>Hello, I’m Linda Umwali, a passionate software engineering student with a strong interest in front-end development and user experience design. I enjoy turning creative ideas into functional, visually appealing web solutions, and I’m always eager to learn new technologies and collaborate on meaningful projects.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills reveal">
+    <h2>Skills</h2>
+    <ul>
+     <div class="skill-item">
+        
+    </div>
+    <table>
+        <tr>
+            <td>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Graphic Design</li>
+            <li>GitHub</li>
+            <li>multi linguistic</li>
+            </td></tr>
+        <tr>
+            <td>
+                <li>Leadership</li>
+                <li>Critical thinking</li>
+                <li>Time management</li>
+                <li>Active listening </li>
+                <li>Problem-solving</li>
+                <li>Teamwork</li>
+                <li>Adaptability</li>
+                <li>Communication</li>
+            </td>
+        </tr>
+    </table>
+
+    </ul>
+  </section>
+
+  <section id="projects" class="projects reveal">
+    <h2>Projects</h2>
+    <p><strong>Plagiarism Detector</strong> – calculation of plagiarism in text shown in percentage</p>
+    <p><strong>Currency Converter</strong> – Converting different currencies to the chosen currency</p>
+    <p><strong>Tv Movies & Shows Search </strong> – A site that enables you to search for a move or a show and gives deatiled information on what you want to watch</p>
+  </section>
+
+  <section id="education" class="education reveal">
+    <h2>Education</h2>
+    <p>Bachelor's in Software Engineering (2024 - Present)<br>African Leadership University</p>
+  </section>
+
+  <section id="Experience" class="reveal">
+    <h2>Work Experience</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Software Engineering Intern</h3>
+        <p>Tech Solutions Ltd - Kigali, Rwanda (June 2024 - May 2025)</p>
+      </div>
+      <div class="card">
+        <h3>Graphic Design</h3>
+        <p>Kigali Better Design - Kigali, Rwanda (June 2024 - August 2024)</p>
+      </div>
+      <div class="card">
+        <h3>Language Toutor</h3>
+        <p>French lessons - Butare, Rwanda (2024 - present)</p>
+      </div>
+      <div class="card">
+        <h3>Art Exhibition</h3>
+        <p>Owner of Luz art - Kigali, Rwanda (2020 - present)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
+    <h2>Contact Me</h2>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+     Thanks for visiting my resume site!
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+    }
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    });
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+      alert("Thank you! Message sent.");
+      return true;
+    }
+  </script>
+</body>
+</html>
